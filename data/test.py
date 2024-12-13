@@ -1,7 +1,11 @@
+import os
 import numpy as np
+import sys
+import json
 from sklearn.metrics.pairwise import cosine_similarity
 from keras.preprocessing.image import load_img, img_to_array
 from keras.applications.resnet50 import preprocess_input
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from app.model.resnet50_model import extract_features
 
 # Function to extract embedding for the new image
@@ -29,16 +33,21 @@ def find_most_similar_image(new_image_path, embeddings, image_paths):
     # Find the index of the most similar image
     most_similar_index = np.argmax(similarities)
     
-    # Return the most similar image's path
+    # Return the most similar image's path and similarity score
     return image_paths[most_similar_index], similarities[0][most_similar_index]
 
-# Load the precomputed embeddings and image paths (assuming they are stored in .npy and .txt files)
-embeddings = np.load('data/embeddings.npy')  # Load precomputed embeddings
-with open('data/image_paths.txt', 'r') as f:
-    image_paths = f.read().splitlines()  # Load the corresponding image paths
+# Load the precomputed embeddings and image paths (from JSON)
+embeddings = np.load('data/data/embeddings.npy')  # Load precomputed embeddings
+
+# Load metadata (image paths and categories) from JSON file
+with open('data/data/metadata.json', 'r') as f:
+    metadata = json.load(f)
+
+# Extract image paths from the metadata
+image_paths = [item['image_path'] for item in metadata]
 
 # Test with a new image
-new_image_path = 'path_to_new_image.jpg'  # Replace with the path to the new image you want to test
+new_image_path = 'data/test.jpg'  # Replace with the path to the new image you want to test
 
 # Find the most similar image
 most_similar_image, similarity_score = find_most_similar_image(new_image_path, embeddings, image_paths)

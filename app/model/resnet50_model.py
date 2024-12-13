@@ -1,6 +1,6 @@
-from tensorflow import ResNet50
-from tensorflow  import preprocess_input
-from tensorflow import load_img, img_to_array
+from keras.applications import ResNet50
+from keras.preprocessing.image import load_img, img_to_array
+from keras.applications.resnet50 import preprocess_input
 import numpy as np
 
 # Load ResNet50 model with ImageNet weights (exclude top layer)
