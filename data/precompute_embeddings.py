@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from app.model.resnet50_model import extract_features  # Import your model
 
 # Define dataset and output paths
-dataset_dir = os.path.join(os.path.dirname(__file__), 'ProjetDataset/Laptop')
+dataset_dir = os.path.join(os.path.dirname(__file__), 'ProjetDataset')
 output_dir = os.path.join(os.path.dirname(__file__), 'data')
 os.makedirs(output_dir, exist_ok=True)  # Ensure output directory exists
 

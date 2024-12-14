@@ -70,5 +70,77 @@
     {
         "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset/Smaartphone\\img9.png",
         "category": "Smaartphone"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Laptop\\img1.png",
+        "category": "Laptop"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Laptop\\img2.jpg",
+        "category": "Laptop"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Laptop\\img3.jpg",
+        "category": "Laptop"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Laptop\\img4.jpg",
+        "category": "Laptop"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Laptop\\img5.jpg",
+        "category": "Laptop"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Laptop\\img6.jpeg",
+        "category": "Laptop"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Laptop\\img7.jpg",
+        "category": "Laptop"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Laptop\\img8.jpg",
+        "category": "Laptop"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Laptop\\img9.jpg",
+        "category": "Laptop"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Smaartphone\\img1.jpg",
+        "category": "Smaartphone"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Smaartphone\\img2.jpg",
+        "category": "Smaartphone"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Smaartphone\\img3.jpg",
+        "category": "Smaartphone"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Smaartphone\\img4.jpg",
+        "category": "Smaartphone"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Smaartphone\\img5.png",
+        "category": "Smaartphone"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Smaartphone\\img6.jpg",
+        "category": "Smaartphone"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Smaartphone\\img7jpg.jpg",
+        "category": "Smaartphone"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Smaartphone\\img8.jpg",
+        "category": "Smaartphone"
+    },
+    {
+        "image_path": "c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data\\ProjetDataset\\Smaartphone\\img9.png",
+        "category": "Smaartphone"
     }
 ]
