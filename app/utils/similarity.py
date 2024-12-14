@@ -2,19 +2,20 @@
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Function to find the most similar image
-def find_most_similar_image(new_image_path, embeddings, image_paths, preprocess_func):
+# Function to find all similar images ranked by similarity
+def find_all_similar_images(new_image_path, embeddings, image_paths, get_embedding_for_new_image):
     # Get the embedding for the new image using the preprocess function
-    new_image_embedding = preprocess_func(new_image_path)
+    new_image_embedding = get_embedding_for_new_image(new_image_path)
     
     # Reshape the new image embedding to match the shape of precomputed embeddings
     new_image_embedding = np.array(new_image_embedding).reshape(1, -1)
     
     # Compute cosine similarity between the new image and all precomputed embeddings
-    similarities = cosine_similarity(new_image_embedding, embeddings)
+    similarities = cosine_similarity(new_image_embedding, embeddings)[0]
     
-    # Find the index of the most similar image
-    most_similar_index = np.argmax(similarities)
+    # Sort all images by similarity score in descending order
+    ranked_indices = np.argsort(similarities)[::-1]  # Sort by highest similarity first
     
-    # Return the most similar image's path and similarity score
-    return image_paths[most_similar_index], similarities[0][most_similar_index]
+    # Return a list of tuples (image_path, similarity_score)
+    ranked_images = [(image_paths[i], similarities[i]) for i in ranked_indices]
+    return ranked_images

@@ -28,15 +28,6 @@
     
     <body>
     
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>  
-    <!-- ***** Preloader End ***** -->
     
     
     <!-- ***** Header Area Start ***** -->
@@ -195,16 +186,14 @@
                     <span>Upload an image to find similar results</span>
                     
                     <div class="upload-area mt-4">
-                        <form action="/products" method="POST" enctype="multipart/form-data" class="mt-4">
+                        <form action="/upload" method="POST" enctype="multipart/form-data" class="mt-4">
                             <div class="custom-file-upload">
-                                <input type="file" id="imageInput" name="image" accept="image/*" class="form-control">
+                                <input type="file" id="imageInput" name="image" accept="image/*" class="form-control" required>
                             </div>
                             <div class="preview-area mt-3">
                                 <img id="imagePreview" src="#" alt="Preview" style="display: none; max-width: 300px; margin: 20px auto;">
                             </div>
-                            <button type="submit" class="main-border-button mt-3">
-                                <a href="#" onclick="return false;">Search Similar Images</a>
-                            </button>
+                            <button type="submit" class="main-border-button mt-3">Search Similar Images</button>
                         </form>
                     </div>
                 </div>
