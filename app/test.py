@@ -12,17 +12,17 @@ from utils.preprocess import get_embedding_for_new_image
 from utils.similarity import find_all_similar_images
 
 # Load the precomputed embeddings and image paths (from JSON)
-embeddings = np.load('data/data/embeddings.npy')  # Load precomputed embeddings
+embeddings = np.load('../data/data/embeddings.npy')  # Load precomputed embeddings
 
 # Load metadata (image paths and categories) from JSON file
-with open('data/data/metadata.json', 'r') as f:
+with open('../data/data/metadata.json', 'r') as f:
     metadata = json.load(f)
 
 # Extract image paths from the metadata
 image_paths = [item['image_path'] for item in metadata]
 
 # Test with a new image
-new_image_path = 'data/test.jpg'  # Replace with the path to the new image you want to test
+new_image_path = '../data/test2.jpg'  # Replace with the path to the new image you want to test
 
 # Find all similar images using the similarity function
 similar_images = find_all_similar_images(new_image_path, embeddings, image_paths, get_embedding_for_new_image)

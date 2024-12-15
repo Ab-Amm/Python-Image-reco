@@ -28,8 +28,9 @@
     
     <body>
     
-    
-    
+
+
+
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
         <div class="container">
@@ -38,7 +39,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="index.html" class="logo">
-                            <img src="assets/images/logo.png">
+                            <img src="../static/images/logo.png">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -54,7 +55,7 @@
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="#explore">Explore</a></li>
-                        </ul>        
+                        </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
@@ -64,7 +65,7 @@
             </div>
         </div>
     </header>
-    <!-- ***** Header Area End *****
+    <!-- ***** Header Area End *****-->
 
 
     <!-- ***** Main Banner Area Start ***** -->
@@ -81,7 +82,7 @@
                                     <a href="#">Purchase Now!</a>
                                 </div>
                             </div>
-                            <img src="assets/images/left-banner-image.jpg" alt="">
+                            <img src="../static/images/setup2.jpg" alt="">
                         </div>
                     </div>
                 </div>
@@ -92,19 +93,19 @@
                                 <div class="right-first-image">
                                     <div class="thumb">
                                         <div class="inner-content">
-                                            <h4>Women</h4>
-                                            <span>Best Clothes For Women</span>
+                                            <h4>Mouse</h4>
+                                            <span>Best Computer Mice For You</span>
                                         </div>
                                         <div class="hover-content">
                                             <div class="inner">
-                                                <h4>Women</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
+                                                <h4>Mouse</h4>
+                                                <p>Computer Mice For Everyone</p>
                                                 <div class="main-border-button">
                                                     <a href="#">Discover More</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="assets/images/baner-right-image-01.jpg">
+                                        <img src="../static/images/mouse.jpg">
                                     </div>
                                 </div>
                             </div>
@@ -112,19 +113,19 @@
                                 <div class="right-first-image">
                                     <div class="thumb">
                                         <div class="inner-content">
-                                            <h4>Men</h4>
-                                            <span>Best Clothes For Men</span>
+                                            <h4>Laptops</h4>
+                                            <span>Best Laptops For Everyone</span>
                                         </div>
                                         <div class="hover-content">
                                             <div class="inner">
-                                                <h4>Men</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
+                                                <h4>Latops & PCs</h4>
+                                                <p>Laptops & PCs For Everyone</p>
                                                 <div class="main-border-button">
                                                     <a href="#">Discover More</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="assets/images/baner-right-image-02.jpg">
+                                        <img src="../static/images/laptop.jpg">
                                     </div>
                                 </div>
                             </div>
@@ -132,19 +133,19 @@
                                 <div class="right-first-image">
                                     <div class="thumb">
                                         <div class="inner-content">
-                                            <h4>Kids</h4>
-                                            <span>Best Clothes For Kids</span>
+                                            <h4>Keyboards</h4>
+                                            <span>Best Keyboards For Everyone</span>
                                         </div>
                                         <div class="hover-content">
                                             <div class="inner">
-                                                <h4>Kids</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
+                                                <h4>Keyboards</h4>
+                                                <p>Keyboards For Everyone</p>
                                                 <div class="main-border-button">
                                                     <a href="#">Discover More</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="assets/images/baner-right-image-03.jpg">
+                                        <img src="../static/images/keyboard.jpg">
                                     </div>
                                 </div>
                             </div>
@@ -152,19 +153,19 @@
                                 <div class="right-first-image">
                                     <div class="thumb">
                                         <div class="inner-content">
-                                            <h4>Accessories</h4>
-                                            <span>Best Trend Accessories</span>
+                                            <h4>Phones</h4>
+                                            <span>Best Phones</span>
                                         </div>
                                         <div class="hover-content">
                                             <div class="inner">
-                                                <h4>Accessories</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
+                                                <h4>Phones</h4>
+                                                <p>Phones For Everyone</p>
                                                 <div class="main-border-button">
                                                     <a href="#">Discover More</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="assets/images/baner-right-image-04.jpg">
+                                        <img src="../static/images/phone.jpg">
                                     </div>
                                 </div>
                             </div>
@@ -175,7 +176,6 @@
         </div>
     </div>
 
-
 <!-- ***** Search Area Starts ***** -->
 <section class="section" id="search">
     <div class="container">
@@ -184,16 +184,20 @@
                 <div class="search-content">
                     <h2>Image Search</h2>
                     <span>Upload an image to find similar results</span>
-                    
+
                     <div class="upload-area mt-4">
+                        <!-- Correct action pointing to /upload -->
                         <form action="/upload" method="POST" enctype="multipart/form-data" class="mt-4">
                             <div class="custom-file-upload">
-                                <input type="file" id="imageInput" name="image" accept="image/*" class="form-control" required>
+                                <input type="file" id="imageInput" name="image" accept="image/*" class="form-control" onchange="previewImage()">
                             </div>
                             <div class="preview-area mt-3">
+                                <!-- Display image preview -->
                                 <img id="imagePreview" src="#" alt="Preview" style="display: none; max-width: 300px; margin: 20px auto;">
                             </div>
-                            <button type="submit" class="main-border-button mt-3">Search Similar Images</button>
+                            <button type="submit" class="main-border-button mt-3">
+                                Search Similar Images
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -202,6 +206,30 @@
     </div>
 </section>
 <!-- ***** Search Area Ends ***** -->
+
+<script>
+    // JavaScript for image preview
+    function previewImage() {
+        const input = document.getElementById('imageInput');
+        const preview = document.getElementById('imagePreview');
+        const file = input.files[0];
+        
+        if (file) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = "block";
+            };
+            
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "#";
+            preview.style.display = "none";
+        }
+    }
+</script>
+
     <!-- ***** Footer Start ***** -->
     <footer>
         <div class="container">
@@ -209,7 +237,7 @@
                 <div class="col-lg-3">
                     <div class="first-item">
                         <div class="logo">
-                            <img src="assets/images/white-logo.png" alt="hexashop ecommerce templatemo">
+                            <img src="../static/images/white-logo.png" alt="hexashop ecommerce templatemo">
                         </div>
                         <ul>
                             <li><a href="#">Sidi bouafif, Alhoceima</a></li>
@@ -221,9 +249,9 @@
                 <div class="col-lg-3">
                     <h4>Shopping &amp; Categories</h4>
                     <ul>
-                        <li><a href="#">Men’s Shopping</a></li>
-                        <li><a href="#">Women’s Shopping</a></li>
-                        <li><a href="#">Kid's Shopping</a></li>
+                        <li><a href="#">Mice &amp; Keyboards</a></li>
+                        <li><a href="#">Laptops</a></li>
+                        <li><a href="#">Phones</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
@@ -260,26 +288,26 @@
     
 
     <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <script src="../static/js/jquery-2.1.0.min.js"></script>
 
     <!-- Bootstrap -->
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="../static/js/popper.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
 
     <!-- Plugins -->
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/accordions.js"></script>
-    <script src="assets/js/datepicker.js"></script>
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script> 
-    <script src="assets/js/slick.js"></script> 
-    <script src="assets/js/lightbox.js"></script> 
-    <script src="assets/js/isotope.js"></script> 
+    <script src="../static/js/owl-carousel.js"></script>
+    <script src="../static/js/accordions.js"></script>
+    <script src="../static/js/datepicker.js"></script>
+    <script src="../static/js/scrollreveal.min.js"></script>
+    <script src="../static/js/waypoints.min.js"></script>
+    <script src="../static/js/jquery.counterup.min.js"></script>
+    <script src="../static/js/imgfix.min.js"></script> 
+    <script src="../static/js/slick.js"></script> 
+    <script src="../static/js/lightbox.js"></script> 
+    <script src="../static/js/isotope.js"></script> 
     
     <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
+    <script src="../static/js/custom.js"></script>
 
     <script>
 
@@ -298,22 +326,6 @@
         });
 
     </script>
-<script>
-    document.getElementById('imageInput').addEventListener('change', function(e) {
-    const preview = document.getElementById('imagePreview');
-    const file = e.target.files[0];
-    
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            preview.src = e.target.result;
-            preview.style.display = 'block';
-        }
-        reader.readAsDataURL(file);
-    }
-});
-</script>
-
 
   </body>
 </html>
