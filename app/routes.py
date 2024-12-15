@@ -42,7 +42,7 @@ def configure_routes(app):
         upload_folder = 'static/uploads'
         os.makedirs(upload_folder, exist_ok=True)
 
-        filename = sanitize_filename(file.filename)
+        filename = secure_filename(file.filename)
         file_path = os.path.join(upload_folder, filename)
         file.save(file_path)
 
@@ -51,26 +51,34 @@ def configure_routes(app):
             file_path, embeddings, image_paths, get_embedding_for_new_image
         )
 
-        relative_images = []
+        # Prepare data for the frontend
+        similar_images_data = []
+
         print("Ranked Images (before modification):", ranked_images)
 
-        # Debugging Relative Paths
+        # Debugging Relative Paths and Metadata
         for image_tuple in ranked_images:
             image_path = image_tuple[0]  # Extract the path from the tuple
             print("Processing Image:", image_path)
+
             if 'ProjetDataset' in image_path:
-                relative_path = image_path.replace('\\', '/').replace('c:/Users/admin/Desktop/PyProjet/Python-Image-reco/data/', 'static/')
-                print("Converted to Relative Path:", relative_path)
-                relative_images.append(relative_path)
+                relative_path = image_path.replace('\\', '/')
+                
+                # Find the metadata for the image based on its path
+                image_metadata = next((item for item in metadata if item['image_path'] == image_path), None)
+                if image_metadata:
+                    similar_images_data.append({
+                        'id': image_metadata['id'],
+                        'image_path': relative_path,
+                        'category': image_metadata['category'],
+                        'price': image_metadata['price']
+                    })
 
+        # Debugging: Print final data structure
+        print("Similar Images Data:", similar_images_data)
 
-        # Debugging: Print relative paths to verify correctness
-        print(relative_images)
-
-        # Render the template with updated relative paths
+        # Render the template with updated relative paths and additional metadata
         return render_template(
             'products.html',
-            ranked_images=relative_images
+            ranked_images=similar_images_data
         )
-
-

@@ -23,6 +23,165 @@
 
     <link rel="stylesheet" href="../static/css/lightbox.css">
 
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        /* Container Styling */
+#explore {
+    padding: 75px 0;
+    background-color: #f9f9f9;
+    max-width: fit-content;
+}
+
+/* Heading and Subheading */
+#explore .section-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#explore .section-heading h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#explore .section-heading span {
+    font-size: 16px;
+    color: #777;
+}
+
+/* Row of Product Cards */
+#explore .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Ensures spacing between cards */
+}
+
+/* Individual Product Card */
+#explore .col-lg-4 {
+    flex: 0 0 31%; /* Ensure 3 items per row (with margin) */
+    box-sizing: border-box;
+    max-width: 31%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card Styles */
+#explore .item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#explore .item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Image and Hover Content */
+#explore .thumb {
+    position: relative;
+    overflow: hidden;
+}
+
+#explore .thumb img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+#explore .hover-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#explore .item:hover .hover-content {
+    opacity: 1;
+}
+
+#explore .hover-content ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#explore .hover-content ul li {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+#explore .hover-content ul li:hover {
+    background-color: #ff8c00;
+}
+
+#explore .hover-content ul li a {
+    color: white;
+    font-size: 16px;
+}
+
+/* Card Text and Stars */
+#explore .down-content {
+    padding: 20px;
+    text-align: center;
+}
+
+#explore .down-content h4 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#explore .down-content span {
+    font-size: 18px;
+    color: #ff8c00;
+    font-weight: bold;
+}
+
+#explore .stars {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+#explore .stars li {
+    color: #f0a500; /* Star color */
+    font-size: 16px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 767px) {
+    #explore .col-lg-4 {
+        flex: 0 0 48%;
+        max-width: 48%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #explore .col-lg-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+    </style>
+
     </head>
 
     <body>
@@ -62,12 +221,35 @@
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="#explore">Explore</a></li>
+                            <!-- Add Cart Icon with Counter
+                            <li class="scroll-to-section">
+                                <a href="#" class="cart-icon">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span class="cart-count">0</span>
+                                </a>
+                            </li> -->
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
                         <!-- ***** Menu End ***** -->
                     </nav>
+                    <!-- ***** Cart Dropdown Start ***** 
+                    <div id="cart-dropdown" class="cart-dropdown">
+                        <div class="cart-header">
+                            <h3>Shopping Cart</h3>
+                            <button class="close-cart">&times;</button>
+                        </div>
+                        <div id="cart-items" class="cart-items">
+                            <!-- Cart items will be dynamically inserted here
+                        </div>
+                        <div class="cart-footer">
+                            <div class="cart-total">
+                                Total: <span id="cart-total-amount">$0.00</span>
+                            </div>
+                            <button class="checkout-button">Checkout</button>
+                        </div>
+                    </div>-->
                 </div>
             </div>
         </div>
@@ -80,23 +262,44 @@
     </div>
     <!-- ***** Main Banner Area End ***** -->
 <!-- ***** Products Area Starts ***** -->
+<!-- ***** Products Area Starts ***** -->
 <section class="section" id="explore">
     <div class="section-heading">
-        <h2>Similar Images</h2>
+        <h2>Similar Products</h2>
         <span>Check out similar products based on your selection.</span>
     </div>
     <div class="row">
-        {% for image in ranked_images %}
+        {% for image_data in ranked_images %}
         <div class="col-lg-4">
             <div class="item">
                 <div class="thumb">
-                    <img src="{{ image }}" alt="Similar Image" />
+                    <div class="hover-content">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-eye"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <img src="{{ image_data.image_path }}" alt="Product Image" />
+                </div>
+                <div class="down-content">
+                    <h4>{{ image_data.category | capitalize }}</h4>
+                    <span>${{ image_data.price }}</span>
+                    <ul class="stars">
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                    </ul>
+                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
 </section>
+<!-- ***** Products Area Ends ***** -->
 
 
 
@@ -197,6 +400,130 @@
             });
         });
 
+    </script>
+
+    <script>
+        let cart = [];
+
+// Load cart from localStorage on page load
+function loadCart() {
+    const savedCart = localStorage.getItem('hexashopCart');
+    if (savedCart) {
+        cart = JSON.parse(savedCart);
+        updateCartDisplay();
+        updateCartCount();
+    }
+}
+
+// Save cart to localStorage
+function saveCart() {
+    localStorage.setItem('hexashopCart', JSON.stringify(cart));
+}
+
+// Add item to cart
+function addToCart(productId, imagePath, category, price) {
+    cart.push({
+        id: productId,
+        image_path: imagePath,
+        category: category,
+        price: parseFloat(price)
+    });
+    saveCart();
+    updateCartDisplay();
+    updateCartCount();
+}
+
+// Remove item from cart
+function removeFromCart(productId) {
+    const index = cart.findIndex(item => item.id === productId);
+    if (index > -1) {
+        cart.splice(index, 1);
+        saveCart();
+        updateCartDisplay();
+        updateCartCount();
+    }
+}
+
+// Update cart display
+function updateCartDisplay() {
+    const cartContainer = document.getElementById('cart-items');
+    if (!cartContainer) return;
+    
+    cartContainer.innerHTML = cart.map(item => `
+        <div class="cart-item">
+            <img src="${item.image_path}" alt="${item.category}">
+            <div class="cart-item-info">
+                <span class="cart-item-name">${item.category}</span>
+                <span class="cart-item-price">$${item.price.toFixed(2)}</span>
+            </div>
+            <button onclick="removeFromCart('${item.id}')" class="remove-item">&times;</button>
+        </div>
+    `).join('');
+
+    // Update total
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    const totalElement = document.getElementById('cart-total-amount');
+    if (totalElement) {
+        totalElement.textContent = `$${total.toFixed(2)}`;
+    }
+}
+
+// Update cart count in header
+function updateCartCount() {
+    const cartCount = document.querySelector('.cart-count');
+    if (cartCount) {
+        cartCount.textContent = cart.length;
+    }
+}
+
+// Toggle cart dropdown
+function toggleCart(event) {
+    event.preventDefault();
+    const cartDropdown = document.getElementById('cart-dropdown');
+    cartDropdown.classList.toggle('active');
+}
+
+// Initialize cart functionality
+document.addEventListener('DOMContentLoaded', function() {
+    loadCart();
+
+    // Add cart icon click handler
+    const cartIcon = document.querySelector('.cart-icon');
+    if (cartIcon) {
+        cartIcon.addEventListener('click', toggleCart);
+    }
+
+    // Add close cart button handler
+    const closeCart = document.querySelector('.close-cart');
+    if (closeCart) {
+        closeCart.addEventListener('click', function() {
+            document.getElementById('cart-dropdown').classList.remove('active');
+        });
+    }
+
+    // Close cart when clicking outside
+    document.addEventListener('click', function(e) {
+        const cartDropdown = document.getElementById('cart-dropdown');
+        const cartIcon = document.querySelector('.cart-icon');
+        
+        if (cartDropdown && !cartDropdown.contains(e.target) && !cartIcon.contains(e.target)) {
+            cartDropdown.classList.remove('active');
+        }
+    });
+
+    // Add to cart buttons
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function(e) {
+            const productCard = e.target.closest('.item');
+            const productId = Math.random().toString(36).substr(2, 9); // Generate random ID
+            const imagePath = productCard.querySelector('img').src;
+            const category = productCard.querySelector('h4').textContent;
+            const price = parseFloat(productCard.querySelector('span').textContent.replace('$', ''));
+            
+            addToCart(productId, imagePath, category, price);
+        });
+    });
+});
     </script>
 
   </body>

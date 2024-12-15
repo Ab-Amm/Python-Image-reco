@@ -22,7 +22,183 @@
     <link rel="stylesheet" href="../static/css/owl-carousel.css">
 
     <link rel="stylesheet" href="../static/css/lightbox.css">
+<style>
+    .recommendations {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+}
 
+.recommendations h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.recommended-products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0 15px;
+}
+
+@media (max-width: 768px) {
+    .recommended-products {
+        grid-template-columns: 1fr;
+    }
+    /* Cart Icon in Header */
+.cart-icon {
+    position: relative;
+    font-size: 24px;
+    color: #333;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+}
+
+.cart-icon:hover {
+    color: #ff8c00; /* Change to a warm color on hover */
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #ff8c00;
+    color: white;
+    font-size: 14px;
+    padding: 3px 7px;
+    border-radius: 50%;
+    font-weight: bold;
+    min-width: 18px;
+    text-align: center;
+}
+
+/* Cart Dropdown */
+.cart-dropdown {
+    position: absolute;
+    top: 60px; /* Position below the cart icon */
+    right: 20px;
+    background-color: white;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hidden */
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.cart-dropdown.active {
+    display: block; /* Display cart dropdown when active */
+    opacity: 1;
+}
+
+.cart-header {
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h3 {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+}
+
+.close-cart {
+    font-size: 20px;
+    color: #888;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-cart:hover {
+    color: #ff8c00;
+}
+
+/* Cart Items */
+.cart-items {
+    padding: 15px;
+    max-height: 250px;
+    overflow-y: auto;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.cart-item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.cart-item-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.cart-item-price {
+    color: #ff8c00;
+}
+
+/* Cart Footer */
+.cart-footer {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    border-radius: 0 0 10px 10px;
+}
+
+.cart-total {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+.checkout-button {
+    padding: 10px 20px;
+    background-color: #ff8c00;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-button:hover {
+    background-color: #e07a00;
+}
+
+/* Make cart dropdown responsive */
+@media screen and (max-width: 768px) {
+    .cart-dropdown {
+        width: 250px;
+    }
+}
+
+}
+</style>
 
     </head>
     
@@ -37,12 +213,12 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
+                        <!-- Existing Logo -->
                         <a href="index.html" class="logo">
                             <img src="../static/images/logo.png">
                         </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
+                        
+                        <!-- Modified Menu -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                             <li class="submenu">
@@ -55,11 +231,35 @@
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="#explore">Explore</a></li>
+                            <!-- Add Cart Icon with Counter 
+                            <li class="scroll-to-section">
+                                <a href="#" class="cart-icon">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span class="cart-count">0</span>
+                                </a>
+                            </li>-->
                         </ul>
+                        
+                        <!-- Cart Dropdown 
+                        <div id="cart-dropdown" class="cart-dropdown">
+                            <div class="cart-header">
+                                <h3>Shopping Cart</h3>
+                                <button class="close-cart">&times;</button>
+                            </div>
+                            <div id="cart-items" class="cart-items">
+                                <!-- Cart items will be dynamically inserted here 
+                            </div>
+                            <div class="cart-footer">
+                                <div class="cart-total">
+                                    Total: <span id="cart-total-amount">$0.00</span>
+                                </div>
+                                <button class="checkout-button">Checkout</button>
+                            </div>
+                        </div>-->
+    
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
-                        <!-- ***** Menu End ***** -->
                     </nav>
                 </div>
             </div>
@@ -207,6 +407,26 @@
 </section>
 <!-- ***** Search Area Ends ***** -->
 
+<section class="recommendations" id="recommendations">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Recommended For You</h2>
+                    <span>Based on your cart items</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="recommended-products" class="recommended-products">
+                    <!-- Recommended products will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <script>
     // JavaScript for image preview
     function previewImage() {
@@ -324,6 +544,132 @@
                 
             });
         });
+
+    </script>
+
+    <script>
+    // Initialize cart display
+    let cart = [];
+
+// Load cart from localStorage on page load
+function loadCart() {
+    const savedCart = localStorage.getItem('hexashopCart');
+    if (savedCart) {
+        cart = JSON.parse(savedCart);
+        updateCartDisplay();
+        updateCartCount();
+    }
+}
+
+// Save cart to localStorage
+function saveCart() {
+    localStorage.setItem('hexashopCart', JSON.stringify(cart));
+}
+
+// Add item to cart
+function addToCart(productId, imagePath, category, price) {
+    cart.push({
+        id: productId,
+        image_path: imagePath,
+        category: category,
+        price: parseFloat(price)
+    });
+    saveCart();
+    updateCartDisplay();
+    updateCartCount();
+}
+
+// Remove item from cart
+function removeFromCart(productId) {
+    const index = cart.findIndex(item => item.id === productId);
+    if (index > -1) {
+        cart.splice(index, 1);
+        saveCart();
+        updateCartDisplay();
+        updateCartCount();
+    }
+}
+
+// Update cart display
+function updateCartDisplay() {
+    const cartContainer = document.getElementById('cart-items');
+    if (!cartContainer) return;
+    
+    cartContainer.innerHTML = cart.map(item => `
+        <div class="cart-item">
+            <img src="${item.image_path}" alt="${item.category}">
+            <div class="cart-item-info">
+                <span class="cart-item-name">${item.category}</span>
+                <span class="cart-item-price">$${item.price.toFixed(2)}</span>
+            </div>
+            <button onclick="removeFromCart('${item.id}')" class="remove-item">&times;</button>
+        </div>
+    `).join('');
+
+    // Update total
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    const totalElement = document.getElementById('cart-total-amount');
+    if (totalElement) {
+        totalElement.textContent = `$${total.toFixed(2)}`;
+    }
+}
+
+// Update cart count in header
+function updateCartCount() {
+    const cartCount = document.querySelector('.cart-count');
+    if (cartCount) {
+        cartCount.textContent = cart.length;
+    }
+}
+
+// Toggle cart dropdown
+function toggleCart(event) {
+    event.preventDefault();
+    const cartDropdown = document.getElementById('cart-dropdown');
+    cartDropdown.classList.toggle('active');
+}
+
+// Initialize cart functionality
+document.addEventListener('DOMContentLoaded', function() {
+    loadCart();
+
+    // Add cart icon click handler
+    const cartIcon = document.querySelector('.cart-icon');
+    if (cartIcon) {
+        cartIcon.addEventListener('click', toggleCart);
+    }
+
+    // Add close cart button handler
+    const closeCart = document.querySelector('.close-cart');
+    if (closeCart) {
+        closeCart.addEventListener('click', function() {
+            document.getElementById('cart-dropdown').classList.remove('active');
+        });
+    }
+
+    // Close cart when clicking outside
+    document.addEventListener('click', function(e) {
+        const cartDropdown = document.getElementById('cart-dropdown');
+        const cartIcon = document.querySelector('.cart-icon');
+        
+        if (cartDropdown && !cartDropdown.contains(e.target) && !cartIcon.contains(e.target)) {
+            cartDropdown.classList.remove('active');
+        }
+    });
+
+    // Add to cart buttons
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function(e) {
+            const productCard = e.target.closest('.item');
+            const productId = Math.random().toString(36).substr(2, 9); // Generate random ID
+            const imagePath = productCard.querySelector('img').src;
+            const category = productCard.querySelector('h4').textContent;
+            const price = parseFloat(productCard.querySelector('span').textContent.replace('$', ''));
+            
+            addToCart(productId, imagePath, category, price);
+        });
+    });
+});
 
     </script>
 
