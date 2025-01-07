@@ -17,5 +17,6 @@ def find_all_similar_images(new_image_path, embeddings, image_paths, get_embeddi
     ranked_indices = np.argsort(similarities)[::-1]  # Sort by highest similarity first
     
     # Return a list of tuples (image_path, similarity_score)
-    ranked_images = [(image_paths[i], similarities[i]) for i in ranked_indices]
+    threshold = 0.7  # Adjust based on experimentation
+    ranked_images = [(image_paths[i], similarities[i]) for i in ranked_indices if similarities[i] > threshold]
     return ranked_images

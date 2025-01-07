@@ -1,0 +1,6 @@
+.vscode/      # Exclude VSCode configuration files
+venv1/        # Exclude your local virtual environment
+.git/         # Exclude Git-related files and folders
+__pycache__/  # Exclude Python bytecode cache
+*.pyc         # Exclude compiled Python files
+*.pyo         # Exclude optimized Python files
