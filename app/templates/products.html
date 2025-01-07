@@ -221,35 +221,14 @@
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="#explore">Explore</a></li>
-                            <!-- Add Cart Icon with Counter
-                            <li class="scroll-to-section">
-                                <a href="#" class="cart-icon">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    <span class="cart-count">0</span>
-                                </a>
-                            </li> -->
+                            
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
                         <!-- ***** Menu End ***** -->
                     </nav>
-                    <!-- ***** Cart Dropdown Start ***** 
-                    <div id="cart-dropdown" class="cart-dropdown">
-                        <div class="cart-header">
-                            <h3>Shopping Cart</h3>
-                            <button class="close-cart">&times;</button>
-                        </div>
-                        <div id="cart-items" class="cart-items">
-                            <!-- Cart items will be dynamically inserted here
-                        </div>
-                        <div class="cart-footer">
-                            <div class="cart-total">
-                                Total: <span id="cart-total-amount">$0.00</span>
-                            </div>
-                            <button class="checkout-button">Checkout</button>
-                        </div>
-                    </div>-->
+                    <
                 </div>
             </div>
         </div>
@@ -277,7 +256,6 @@
                         <ul>
                             <li><a href="#"><i class="fa fa-eye"></i></a></li>
                             <li><a href="#"><i class="fa fa-star"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <img src="{{ image_data.image_path }}" alt="Product Image" />
@@ -292,7 +270,7 @@
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
                     </ul>
-                    <!-- <button class="add-to-cart">Add to Cart</button>-->
+                    
                 </div>
             </div>
         </div>
@@ -400,130 +378,6 @@
             });
         });
 
-    </script>
-
-    <script>
-        let cart = [];
-
-// Load cart from localStorage on page load
-function loadCart() {
-    const savedCart = localStorage.getItem('hexashopCart');
-    if (savedCart) {
-        cart = JSON.parse(savedCart);
-        updateCartDisplay();
-        updateCartCount();
-    }
-}
-
-// Save cart to localStorage
-function saveCart() {
-    localStorage.setItem('hexashopCart', JSON.stringify(cart));
-}
-
-// Add item to cart
-function addToCart(productId, imagePath, category, price) {
-    cart.push({
-        id: productId,
-        image_path: imagePath,
-        category: category,
-        price: parseFloat(price)
-    });
-    saveCart();
-    updateCartDisplay();
-    updateCartCount();
-}
-
-// Remove item from cart
-function removeFromCart(productId) {
-    const index = cart.findIndex(item => item.id === productId);
-    if (index > -1) {
-        cart.splice(index, 1);
-        saveCart();
-        updateCartDisplay();
-        updateCartCount();
-    }
-}
-
-// Update cart display
-function updateCartDisplay() {
-    const cartContainer = document.getElementById('cart-items');
-    if (!cartContainer) return;
-    
-    cartContainer.innerHTML = cart.map(item => `
-        <div class="cart-item">
-            <img src="${item.image_path}" alt="${item.category}">
-            <div class="cart-item-info">
-                <span class="cart-item-name">${item.category}</span>
-                <span class="cart-item-price">$${item.price.toFixed(2)}</span>
-            </div>
-            <button onclick="removeFromCart('${item.id}')" class="remove-item">&times;</button>
-        </div>
-    `).join('');
-
-    // Update total
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
-    const totalElement = document.getElementById('cart-total-amount');
-    if (totalElement) {
-        totalElement.textContent = `$${total.toFixed(2)}`;
-    }
-}
-
-// Update cart count in header
-function updateCartCount() {
-    const cartCount = document.querySelector('.cart-count');
-    if (cartCount) {
-        cartCount.textContent = cart.length;
-    }
-}
-
-// Toggle cart dropdown
-function toggleCart(event) {
-    event.preventDefault();
-    const cartDropdown = document.getElementById('cart-dropdown');
-    cartDropdown.classList.toggle('active');
-}
-
-// Initialize cart functionality
-document.addEventListener('DOMContentLoaded', function() {
-    loadCart();
-
-    // Add cart icon click handler
-    const cartIcon = document.querySelector('.cart-icon');
-    if (cartIcon) {
-        cartIcon.addEventListener('click', toggleCart);
-    }
-
-    // Add close cart button handler
-    const closeCart = document.querySelector('.close-cart');
-    if (closeCart) {
-        closeCart.addEventListener('click', function() {
-            document.getElementById('cart-dropdown').classList.remove('active');
-        });
-    }
-
-    // Close cart when clicking outside
-    document.addEventListener('click', function(e) {
-        const cartDropdown = document.getElementById('cart-dropdown');
-        const cartIcon = document.querySelector('.cart-icon');
-        
-        if (cartDropdown && !cartDropdown.contains(e.target) && !cartIcon.contains(e.target)) {
-            cartDropdown.classList.remove('active');
-        }
-    });
-
-    // Add to cart buttons
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', function(e) {
-            const productCard = e.target.closest('.item');
-            const productId = Math.random().toString(36).substr(2, 9); // Generate random ID
-            const imagePath = productCard.querySelector('img').src;
-            const category = productCard.querySelector('h4').textContent;
-            const price = parseFloat(productCard.querySelector('span').textContent.replace('$', ''));
-            
-            addToCart(productId, imagePath, category, price);
-        });
-    });
-});
     </script>
 
   </body>
